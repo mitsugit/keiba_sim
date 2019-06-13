@@ -1,0 +1,89 @@
+
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel ="stylesheet" type="text/css"
+        href="{% static 'keiba/css/style.css' %}" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+
+        {{x}}
+        {{start_index}}
+        {{kikan}}
+        {{types}}
+        {{date_value}}
+        {{start_date}}
+        {{end_date}}
+
+<table>
+    <form action="{% url 'logicselect' %}" method="post">
+            {% csrf_token %}
+            {{form}}
+            <tr><td></td><td><input type="submit" value="select" id="test"></td></tr>
+    </form>
+</table>
+</head>
+
+
+ベット方法：{{data.5}}
+<p></p>
+予算：   {{data.0}}
+<p></p>
+初回金額：{{data.1}}
+：{{data.2}}
+固定ベット金額：{{data.3}}
+ベット方法：{{data.4}}
+直近ベットの何倍：{{data.5}}
+：{{data.6}}
+リセット条件{{data.7}}
+連続連敗数：{{data.8}}
+連続勝数：{{data.9}}
+
+ストップ条件
+連続連敗数：{{data.10}}
+ベット金額上限：{{data.11}}
+
+ターゲット単勝人気：{{data.12}}
+ターゲット騎手：{{data.13}}
+
+オッズ下限：{{data.14}}
+オッズ上限：{{data.15}}
+
+カウントダウン
+人気着外数：{{data.16}}
+騎手着外数：{{data.17}}
+着外対象順位：{{data.18}}
+
+開催場所：{{data.19}}
+
+開催日時（始）：{{data.20}}
+開催日時（終）：{{data.21}}
+
+何レース分：{{data.22}}
+
+レースタイプ：{{data.23}}
+
+距離（min):{{data.24}}
+距離（max):{{data.25}}
+
+
+
+
+
+<!-- {{friend}}
+{{message2}} 
+{% for item in logic_list.all %}
+{{item}}
+{{item.id}}
+{% endfor %} -->
+
+<form action="{% url 'logictest'%}" method="post">
+                {% csrf_token %}
+                {{logictestbutton}}
+                <tr><td></td><td><input type="submit" value="click"></td></tr>
+            </form>
+
+</html>

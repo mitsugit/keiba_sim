@@ -1,0 +1,383 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>合成オッズ計算 - オリジナルモード</title>
+        <meta charset="utf-8">
+        <meta name="application-name" content="合成オッズの計算"/>
+        <link rel="stylesheet" media="screen" href="/public/stylesheets/combined.css">
+                <link rel="shortcut icon" type="image/png" href="/public/images/application.png">
+        <script src="/public/javascripts/jquery-1.6.4.min.js" type="text/javascript" charset="utf-8"></script>
+            </head>
+    <body>
+<a href="/k/combined_odds/original/">携帯版オリジナル</a>／
+<a href="/k/combined_odds/simple/">携帯版シンプル</a>
+      <div id="ad">
+
+<!-- 
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39546833-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2384430&pid=883382842" target="_blank" rel="nofollow"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2384430&pid=883382842" border="0"></a>
+      </div> -->
+      <div id="contents">
+        
+<a href="/combined_odds/">戻る</a>
+<h1>合成オッズ計算</h1>
+<form method="POST" action="/combined_odds/original/" >
+<table border="1">
+  <tr>
+    <td>投資額</td>
+    <td><input type="text" name="vm.toushigaku" value="" style="ime-mode: disabled;"></td>
+    <td><input type="submit" value="計算する"></td>
+    <td><a href="/combined_odds/">使い方</a></td>
+  </tr>
+</table>
+<table border="1">
+  <tr>
+    <td>購入額計算のオプション</td>
+    <td>
+<label><input type="radio" name="vm.roundingCd" value="0" checked="checked"/>四捨五入</label>
+<label><input type="radio" name="vm.roundingCd" value="1" />切り捨て</label>
+<label><input type="radio" name="vm.roundingCd" value="2" />切り上げ</label>
+    </td>
+  </tr>
+</table>
+<table border="1">
+    <tr>
+      <td>No.</td>
+      <td>対象</td>
+      <td>オッズ</td>
+      <td>割合</td>
+      <td>購入額</td>
+      <td>払戻</td>
+      <td>利益</td>
+      <td>実オッズ</td>
+      <td>備考</td>
+      <!-- <td rowspan="20">    <script type="text/javascript"><!--
+amazon_ad_tag = "nasutomato09-22"; amazon_ad_width = "120"; amazon_ad_height = "600"; amazon_ad_link_target = "new";//--></script>
+<!-- <script type="text/javascript" src="https://ir-jp.amazon-adsystem.com/s/ads.js"></script> --> -->
+   </td>
+    </tr>
+      <tr>
+      <td align="center">1</td>
+      <td>
+        <input type="checkbox" name="vm.list[0].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[0].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">2</td>
+      <td>
+        <input type="checkbox" name="vm.list[1].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[1].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">3</td>
+      <td>
+        <input type="checkbox" name="vm.list[2].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[2].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">4</td>
+      <td>
+        <input type="checkbox" name="vm.list[3].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[3].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">5</td>
+      <td>
+        <input type="checkbox" name="vm.list[4].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[4].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">6</td>
+      <td>
+        <input type="checkbox" name="vm.list[5].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[5].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">7</td>
+      <td>
+        <input type="checkbox" name="vm.list[6].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[6].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">8</td>
+      <td>
+        <input type="checkbox" name="vm.list[7].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[7].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">9</td>
+      <td>
+        <input type="checkbox" name="vm.list[8].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[8].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">10</td>
+      <td>
+        <input type="checkbox" name="vm.list[9].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[9].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">11</td>
+      <td>
+        <input type="checkbox" name="vm.list[10].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[10].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">12</td>
+      <td>
+        <input type="checkbox" name="vm.list[11].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[11].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">13</td>
+      <td>
+        <input type="checkbox" name="vm.list[12].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[12].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">14</td>
+      <td>
+        <input type="checkbox" name="vm.list[13].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[13].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">15</td>
+      <td>
+        <input type="checkbox" name="vm.list[14].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[14].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">16</td>
+      <td>
+        <input type="checkbox" name="vm.list[15].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[15].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">17</td>
+      <td>
+        <input type="checkbox" name="vm.list[16].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[16].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+      <tr>
+      <td align="center">18</td>
+      <td>
+        <input type="checkbox" name="vm.list[17].isUse" />
+      </td>
+      <td>
+        <input type="text" name="vm.list[17].odds" value="" style="ime-mode: disabled;"/>
+      </td>
+      <td align="right">
+        0%
+      </td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right">0円</td>
+      <td align="right"></td>
+      <td></td>
+    </tr>
+  </table>
+</form>
+      </div>
+      <div id="footer">
+        <address>&copy; 2013 nasu-tomato All Rights Reserved.</address>
+      </div>
+    </body>
+</html>

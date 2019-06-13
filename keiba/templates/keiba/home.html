@@ -1,0 +1,22 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <!-- <title>{{title}}</title> -->
+        <link rel ="stylesheet" type="text/css"
+            href="{% static 'keiba/css/style.css' %}" />
+           
+    
+    </head>
+
+<h1 class="toptitle">競馬カウントダウンシミュレーション</h1>
+
+<body>
+<div class="main_menu">
+        <p><a href="{% url 'racesettei' %}">レース設定</a></p>
+        <p><a href="{% url 'logic' %}">ロジック設定</a></p>
+        <p><a href="{% url 'logic_list' %}">ロジック一覧</a></p>
+    </div>
+</body>
+</html>

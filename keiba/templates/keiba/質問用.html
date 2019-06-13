@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel ="stylesheet" type="text/css"
+        href="{% static 'keiba/css/style.css' %}" />
+    
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.2.4/balloon.min.css">
+      
+</head>
+
+
+<body>
+    <p>{{logiclistform}}</p>
+            <table>
+                    <form action="{% url 'result' %}" method="post">
+                            {% csrf_token %}
+                            {{form}}
+                            <tr><td></td><td><input type="submit" value="テストする" id="test"></td></tr>
+                    </form>
+             </table>
+             
+
+             <div id="side02">
+                    <hr>
+                    登録一覧   
+                    <table>
+                        <tr>
+                           <th>id</th>                        
+                           <th>予算</th>                        
+                           <th>定額or変動</th>                        
+                        </tr>
+                    {% for item in logic_list.all %}
+                    <tr>
+                    <td>{{item.id}}</td>             
+                    <td>{{item.budget}}</td> 
+                    <td>{{item.fix_or_variable}}</td>  
+                    </tr>
+                    {% endfor %}
+                    </table>
+                    
+                </div>
+             
+
+    </body>
+    </html>

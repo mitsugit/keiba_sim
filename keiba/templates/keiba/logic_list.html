@@ -1,0 +1,97 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <!-- <title>{{title}}</title> -->
+    <link rel ="stylesheet" type="text/css"
+        href="{% static 'keiba/css/style.css' %}" />
+       
+
+</head>
+
+
+
+
+
+	<!-- メインメニュー -->
+	<ul class="table-ul">
+            <li id="menu01"><a href="{% url '' %}">Home</a></li>
+            <li id="menu02"><a href="{% url 'racesettei' %}">レース設定へ</a></li>
+            <li id="menu03"><a href="{% url 'logic' %}">ロジック設定へ</a></li>
+     
+        </ul>
+
+  
+
+
+
+        <div class="title">
+        <h2>ロジックリスト</h2>
+        </div>  
+
+<!-- <div class="top">
+<p><a href="{% url '' %}">Home</a>
+</div>
+
+<div class="top">
+<p><a href="{% url 'logic' %}">ロジック設定へ</a></p> -->
+</div>
+
+<body>
+
+        <div class = "count">
+            <p>
+                対象レース数{{racecounts}}
+                最大レース間隔数{{max_interval}}
+                平均レース間隔数{{avg_interval}}
+            </p>
+        </div>
+
+ <div id="side02">
+
+                    <div class="table">
+                    <hr>
+                    <h2>登録一覧</h2>    
+                    <table>
+                        <tr>
+                           <th>id</th>
+                           
+                           <th>ベット方法</th>
+                           <th>対象人気</th>
+                        
+                           <th>カウントダウン</th>
+                           <th>最大損失額</th>
+                           <th>ベット回数</th>
+                           <th>合計利益</th>
+                            <th>最大レース間隔</th>
+                           <th>平均レース間隔</th>
+                            <th>回収率</th>
+           
+                        </tr>
+                    {% for item in logic_list.all %}
+                    <tr>
+                    <td>{{item.id}}</td>
+                    
+                     <td>{{item.bet_way}}</td>
+                     <td>{{item.target_ninki}}</td>
+               
+                        <td>{{item.start_bet_ninki}}</td>
+                        <td>{{item.mx_loss}}</td>
+                        <td>{{item.count_bet}}</td>
+                        <td>{{item.profit}}</td>
+                        <td>{{item.max_interval}}</td>
+                        <td>{{item.avg_interval}}</td>
+                        <td>{{item.recovery_rate}}</td>
+
+                    </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+                </div>
+
+
+
+</body>
+
+</html>

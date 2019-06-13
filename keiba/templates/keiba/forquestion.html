@@ -1,0 +1,71 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <!-- <title>{{title}}</title> -->
+        <link rel ="stylesheet" type="text/css"
+            href="{% static 'keiba/css/style.css' %}" />
+           
+    
+    </head>
+
+<h1 class="toptitle">テスト</h1>
+
+<body>
+
+        <form name="ttt">
+                <label>
+                  <input type="checkbox" name="all" onClick="AllChecked();" />全て選択
+                </label>
+                <p>
+                  <label>
+                    <input type="checkbox" name="test" value="中山" onClick="DisChecked();" />中山
+                  </label>
+                  <label>
+                    <input type="checkbox" name="test" value="東京" onClick="DisChecked();" />東京
+                  </label>
+                  <label>
+                    <input type="checkbox" name="test" value="新潟" onClick="DisChecked();" />新潟
+                  </label>
+                  <label>
+                    <input type="checkbox" name="test" value="福島" onClick="DisChecked();" />福島
+                  </label>
+                </p>
+              </form>
+              
+              <script language="JavaScript" type="text/javascript">
+              <!--
+                // 「全て選択」チェックで全てにチェック付く
+                function AllChecked(){
+                  var all = document.ttt.all.checked;
+                  for (var i=0; i<document.ttt.test.length; i++){
+                    document.ttt.test[i].checked = all;
+                  }
+                }
+              
+                // 一つでもチェックを外すと「全て選択」のチェック外れる
+                function　DisChecked(){
+                  var checks = document.ttt.test;
+                  var checksCount = 0;
+                  for (var i=0; i<checks.length; i++){
+                    if(checks[i].checked == false){
+                      document.ttt.all.checked = false;
+                    }else{
+                      checksCount += 1;
+                      if(checksCount == checks.length){
+                        document.ttt.all.checked = true;
+                      }
+                    }
+                  }
+                }
+              // -->
+              </script>
+
+
+
+
+
+</body>
+</html>
+

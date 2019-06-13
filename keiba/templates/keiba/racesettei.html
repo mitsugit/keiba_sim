@@ -1,0 +1,250 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel ="stylesheet" type="text/css"
+        href="{% static 'keiba/css/style.css' %}" />
+    
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.2.4/balloon.min.css">
+        <label data-balloon="テストの内容1です。" data-balloon-pos="down"><input type="radio" name="test" value="テストです">test1</label>
+        <input type="radio" name="test" value="テストです" data-balloon="テストの内容2です。" data-balloon-pos="down">test2 -->
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.2.4/balloon.min.css">
+        <!-- <script>   
+        window.addEventListener('DOMContentLoaded', function(e){
+          var n=document.querySelector('#id_bet_way_2');
+          var l=document.createElement('label');
+          l.setAttribute("data-balloon","マーチンゲ");
+          l.setAttribute("data-balloon-pos","down");
+          n.parentNode.insertBefore(l,n);
+          l.appendChild(n);
+        });
+        </script>
+        <input type="radio" name="test" value="テストです" id="test_id"> -->
+
+
+</head>
+
+
+
+	<!-- メインメニュー -->
+	<ul class="table-ul">
+        <li id="menu01"><a href="{% url '' %}">Home</a></li>
+        <li id="menu02"><a href="{% url 'logic' %}">ロジック設定</a></li>
+        <li id="menu03"><a href="{% url 'logic_list' %}">ロジック一覧</a></li>
+ 
+    </ul>
+
+
+
+<h1>レース設定選択</h1>
+
+
+<p>{{ms1}}</p>
+
+
+
+
+<div id="wrapper">
+        <main id="main">
+            
+           <table id="record" {{ record|safe }}>
+            
+                <form action="{% url 'racerecord' %}" method="post">
+                        {% csrf_token %}
+                        {{form}}
+                        <!-- {% for x in form %}
+                        {{x}}
+                        {% endfor %} --> 
+                        
+                        <tr><td></td><td><input type="submit" value="登録用クリック" id="recordbutton"></td></tr>
+                        
+                </form>
+         </table>
+
+         </main>
+
+
+
+
+<!-- 
+    <form action="{% url 'racerecord'%}" method="post">
+    {% csrf_token %}
+    {{recordbutton}}
+    <tr><td></td><td><input type="submit" value="登録用クリック" id="recordbutton"></td></tr>
+    </form> -->
+
+
+
+
+
+
+
+
+  
+
+
+
+<h1>{{title}}</h1>
+
+
+{{target_df.id}}
+{{target_df.jockey}}
+<!-- <p>{{message}}</p> -->
+<p>{{message2}}</p>
+<!-- {{rece_place}}
+{{win_ninki_plus}}
+{{start_date}}
+<!-- {{start_df}} -->
+{{y}}
+
+
+
+    <main id="main">
+        
+        <table id="settei" {{ confirm|safe }}>
+                設定入力
+                <form action="{% url 'racesettei' %}" method="post">
+                        {% csrf_token %}
+                        {{form}}
+                        <!-- {% for x in form %}
+                        {{x}}
+                        {% endfor %} -->
+                        <tr><td></td><td><input type="submit" value="確認用クリック" id="setteibutton"></td></tr>                 
+                </form>
+         </table> 
+    </main>
+    
+   
+
+    <div id="side02">
+         対象レース数{{racecounts}}
+         最大レース間隔数{{max_interval}}
+         平均レース間隔数{{avg_interval}}
+
+        
+
+         <hr>
+         登録一覧   
+         <table>
+             <tr>
+                <th>id</th>
+                <th>開催場</th>
+                <th>開催日（始）</th> 
+                <th>開催日（終）</th> 
+                <th>芝・ダ・障</th> 
+                <th>距離min</th>
+                <th>距離max</th>
+                <th>オッズ・騎手条件</th> 
+                <!-- <th>騎手条件</th>  -->
+                <th>対象レース数</th>
+                <th>最大レース間隔数</th>
+                <th>平均レース間隔数</th>
+
+             </tr>
+
+
+         
+
+
+         {% for item in racesettei_list.all %}
+         <tr>
+         <!-- <td>{{item.id}}</td> -->
+         <td>{{forloop.counter}}</td>
+         <!-- <td>
+             {% if item.name == "" %}
+                 登録 No.{{item.id}}
+             {% else %}
+                 {{item.name}}
+             {% endif %}
+          </td> -->
+          <td>{{item.race_place}}</td>
+          <td>{{item.start_date}}</td>
+          <td>{{item.end_date}}</td>
+          <td>{{item.race_type}}</td>
+          <td>{{item.from_distance}}</td>
+          <td>{{item.to_distance}}</td>
+        
+          <td>{% if item.win_ninki == None and item.target_jockey != "" %}
+                {{item.target_jockey}}が{{item.odds_minimum}}倍以上{{item.odds_max}}倍以下
+              {% elif item.target_jockey == "" %} 
+                {{item.win_ninki}}番人気が{{item.odds_minimum}}倍以上{{item.odds_max}}倍以下</td>
+              {% elif item.target_jockey != "" %} 
+              {{item.win_ninki}}番人気の{{item.target_jockey}}が{{item.odds_minimum}}倍以上{{item.odds_max}}倍以下</td>
+              {% else %}
+               --
+            {% endif %}
+          <td>{{item.howmany_race}}</td>>
+          <td>{{item.max_interval}}</td>>
+          <td>{{item.avg_interval}}</td>>
+        
+         </tr>
+         {% endfor %}
+         </table>
+         
+        </div>
+    <!-- <hr> -->
+   <!-- {{racesettei_list}} #} -->
+    
+   
+    <p>{{session}}</p>
+    <p>{{session2}}</p>
+
+   
+    
+</div>
+
+
+
+
+
+<script>
+        document.getElementById('id_race_place_0').onclick = function() {
+                        document.getElementById('id_race_place_1').checked = true;
+ 
+                    };
+
+</script>  
+
+<script>
+      
+        document.getElementById("number_horse_min").value= 2;
+        // document.getElementById("id_number_horse_min").style.visibility = "hidden";
+        document.getElementById("setteibutton").style.backgroundColor = "pink";
+        document.getElementById("setteibutton").style.fontSize = "20px";
+        document.getElementById("setteibutton").style.cursor = "pointer";
+        document.getElementsByName("race_place").checked = true;
+
+        
+        document.getElementById("recordbutton").style.backgroundColor = "pink";
+        document.getElementById("recordbutton").style.fontSize = "20px";
+        document.getElementById("recordbutton").style.cursor = "pointer";
+        // document.getElementById("settei").style.visibility="visible";
+        // document.getElementById("recordbutton").style.visibility="hidden";
+       
+        
+
+        
+
+
+        // document.getElementById("settei").onclick = function(){
+        //    document.getElementById("record").style.visibility="visible";
+        //     document.getElementById("settei").style.visibility="hidden";
+        // };
+        
+
+        
+</script>  
+
+
+    
+
+
+        </body>
+        </html>
+
+
+        

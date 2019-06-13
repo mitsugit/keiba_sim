@@ -1,0 +1,108 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel ="stylesheet" type="text/css"
+        href="{% static 'keiba/css/style.css' %}" />
+        <script src="{% static 'keiba/pace.js' %}" ></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/black/pace-theme-loading-bar.css" >
+
+
+</head>
+{{ms}}
+
+
+
+<div id="wrapper">
+    <main id="main">
+        <hr>結果一覧
+        <table>
+            <tr>
+                <th>最大不的中数</th>
+                <th>最大連敗数</th>
+                <th>最大損失額</th> 
+                <th>的中時利益合計</th> 
+                <th>ベット金額合計</th>
+                <th>最大ベット金額</th>  
+                <th>払戻合計</th>
+                <th>ベット回数</th>
+                <!-- <th>ベットリスト</th> -->
+                <th>利益</th>
+                <th>回収率</th>
+                <!-- <th>ベット対象レースリスト</th>  -->
+                <th>最大レース間隔</th> 
+                <th>平均レース間隔</th>     
+            </tr>
+
+            <tr>
+                <td>{{QueryDict.mxlost}}</td>
+                <td>{{data.1}}</td>
+                <td>{{data.2}}</td>
+                <td>{{data.3}}</td>
+                <td>{{data.4}}</td>
+                <td>{{QueryDict.mxbet}}</td>
+
+                <td>{{data.5}}</td>
+                <td>{{data.7}}</td>
+                <!-- <td>{{data.6}}</td> -->
+                <td>{{data.8}}</td>
+                <td>{{data.9}}</td>
+                <!-- <td>{{data.10}}</td> -->
+                <td>{{data.11}}</td>
+                <td>{{data.12}}</td>
+            </tr>
+                
+        </table>
+        <p>ストップ理由</p>
+        <P>{{QueryDict.reason_for_stop}}</P>
+
+
+        
+
+        
+
+
+
+
+
+
+
+    </main>
+
+</div>
+
+
+{{request.session}}
+{{QueryDict}}
+
+{{QueryDict.mxbet}}
+
+
+<div id="wrapper">
+    <main id="main">
+
+        
+       <table id="record" {{ record|safe }}>
+        
+            <form action="{% url 'logic_save' %}" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                    <!-- {% for x in form %}
+                    {{x}}
+                    {% endfor %} --> -->
+                    
+                    <tr><td></td><td><input type="submit" value="登録用クリック" id="recordbutton"></td></tr>
+                    
+            </form>
+     </table>
+
+     </main>
+
+     
+
+
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel ="stylesheet" type="text/css"
+        href="{% static 'keiba/css/style.css' %}" />
+    
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.2.4/balloon.min.css">
+        <label data-balloon="テストの内容1です。" data-balloon-pos="down"><input type="radio" name="test" value="テストです">test1</label>
+        <input type="radio" name="test" value="テストです" data-balloon="テストの内容2です。" data-balloon-pos="down">test2 -->
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.2.4/balloon.min.css">
+        <script>
+        window.addEventListener('DOMContentLoaded', function(e){
+          var n=document.querySelector('#id_bet_way_2');
+          var l=document.createElement('label');
+          l.setAttribute("data-balloon","マーチンゲ");
+          l.setAttribute("data-balloon-pos","down");
+          n.parentNode.insertBefore(l,n);
+          l.appendChild(n);
+        });
+        </script>
+        <!-- <input type="radio" name="test" value="テストです" id="test_id"> -->
+
+
+
+
+
+
+</head>
+
+
+<body>
+    <p><a href="{% url '' %}">Home</a></p>
+    <h1>ロジック設定</h1>
+    
+    <!-- <p>{{message}}</p> -->
+    <p>{{message2}}</p>
+
+    ロード予算：{{loaded_budget}}
+
+             <!--<form action="{% url 'logic' %}" method="post">-->
+                        <!--{% csrf_token %}-->
+                        <!--{{form}}-->
+                        <!--&lt;!&ndash; {% for x in form %}-->
+                        <!--{{x}}-->
+                        <!--{% endfor %} &ndash;&gt;-->
+
+                        <!--<tr><td></td><td><input type="submit" value="読み込み" id="loadlogicbutton"></td></tr>-->
+
+                <!--</form>-->
+
+
+
+
+
+
+
+    <h2>レース設定がまだの場合は<a href="{% url 'racesettei' %}">ターゲットレース設定へ</a></h2>
+    <p>登録済みのロジックから選ぶ：{{logiclistform}}</p>
+
+    <form action="{% url 'logic_load' %}" method="post">
+            {% csrf_token %}
+            {{logiclistform}}
+            <!-- {% for x in form %}
+            {{x}}
+            {% endfor %} -->
+            <tr><td></td><td><input type="submit" value="読み込む" id="logiclistform"></td></tr>
+    </form>
+
+
+
+
+
+            <table>
+                    <form action="{% url 'result' %}" method="post">
+                            {% csrf_token %}
+                            {{form2}}
+                            <!-- {% for x in form %}
+                            {{x}}
+                            {% endfor %} -->
+                            <tr><td></td><td><input type="submit" value="テストする" id="test"></td></tr>
+                    </form>
+             </table>
+             
+             
+
+
+             <!-- <div id="side02">
+                    <!-- 対象レース数{{racecounts}}
+                    最大レース間隔数{{max_interval}}
+                    平均レース間隔数{{avg_interval}} -->
+                    <!-- <hr> -->
+                    <!-- 登録一覧    --> 
+                    <!-- <table>
+                        <tr>
+                           <th>id</th>
+                           <th>ターゲットレース</th>
+                           <th>予算</th> 
+                           <th>初回ベット金額</th> 
+                           <th>ベット方法</th> 
+                           <th>定額or変動</th>
+                           <th>連続不的中上限</th>
+                           <th>ベット上限額</th>
+                           <th>的中時ストップ</th>
+                           <th>利益上限</th>
+                           <th>オッズ（min)</th> 
+                           <th>オッズ(max)</th> 
+                           <th>対象人気</th>     
+                           <th>対象騎手</th>
+
+                           <th>カウントダウン人気</th>
+                           <th>カウントダウン騎手</th>
+                           <th>人気着外カウントダウン</th>
+                           <th>騎手着外カウントダウン</th>
+                           <th>対象着</th>
+           
+                        </tr> -->
+                    <!-- {% for item in logic_list.all %}
+                    <tr>
+                    <td>{{item.id}}</td>
+                    <!-- <td>
+                        {% if item.name == "" %}
+                            登録 No.{{item.id}}
+                        {% else %}
+                            {{item.name}}
+                        {% endif %}
+                     </td> -->
+                     
+                     <!-- <td>{{item.target_race}}</td>
+                     <td>{{item.budget}}</td>
+                     <td>{{item.select_or_manual}}</td>
+                     <td>{{item.bet_way}}</td>
+                     
+                     <td>{{item.fix_or_variable}}</td>
+
+                     <td>{{item.stopbet_bylost}}</td>
+                     <td>{{item.stopbet_bymaxbet}}</td>
+                     <td>{{item.stop_when_hit}}</td>
+                     <td>{{item.stop_bymaxprofit}}</td>
+                     
+                     
+
+                     <td>{{item.odds_minimum}}</td>
+                     <td>{{item.odds_max}}</td>
+
+                     <td>{{item.target_ninki}}</td>
+                     <td>{{item.target_jockey}}</td>
+
+                     <td>{{item.countdown_ninki}}</td>
+                     <td>{{item.countdown_jockey}}</td>
+
+                     <td>{{item.start_bet_ninki}}</td>
+                     <td>{{item.start_bet_jockey}}</td>
+
+
+                     <td>{{item.target_place}}</td> -->
+
+                      
+                     <!-- <form action="{% url 'result2' %}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" id="itemId" value="{{item.id}}">
+                            <td><input type="submit" value="この設定でテストする" id="test"></td>
+                     </form>     -->
+
+                     
+<!--                    
+                    </tr>
+                    {% endfor %}
+                    </table>
+                    
+                </div> --> -->
+
+                <script>
+                    //初期設定
+
+                    document.getElementById('id_budget').value = {{loaded_budget}}
+
+                    <!--document.getElementById('id_budget').value = 30000;-->
+                    <!--document.getElementById('id_bet_way_1').checked = true;-->
+
+                    document.getElementById('id_fix_or_variable').style.visibility = 'hidden';
+                    document.getElementById('id_fix_bet').style.visibility ='hidden';
+                    document.getElementById('id_nanbai').style.visibility = 'hidden';
+                    document.getElementById('id_countdown_jockey').style.visibility = 'hidden';
+                    document.getElementById('id_countdown_select_1').disabled = true;
+                    // document.getElementById("id_fix_bet").style.visibility = "hidden";
+                    //     document.forms[0].addEventListener('change', function(event) {
+                    //     document.getElementById('id_fix_bet').style.visibility = event.currentTarget.elements['hoge'].value === 'piyo' ? 'visible' : 'hidden';
+                    // }, false);
+
+
+                    // // 選択かマニュアルによるベット方法の見え隠れ
+                    document.getElementById('id_select_or_manual_0').onclick = function() {
+                        document.getElementById('id_bet_way').style.visibility = 'visible';
+                        document.getElementById('id_margin').style.visibility = 'visible';
+                        document.getElementById('id_fix_bet').style.visibility = 'hidden';
+                        document.getElementById('id_nanbai').style.visibility = 'hidden';
+                        document.getElementById('id_fix_or_variable').style.visibility = 'hidden';
+                    }
+                    document.getElementById('id_select_or_manual_1').onclick = function() {
+                        document.getElementById('id_bet_way').style.visibility = 'hidden';
+                        document.getElementById('id_margin').style.visibility = 'hidden'; 
+                        document.getElementById('id_fix_bet').style.visibility = 'visible';
+                        document.getElementById('id_nanbai').style.visibility = 'visible';
+                        document.getElementById('id_fix_or_variable').style.visibility = 'visible';
+                        }
+
+
+                    // // 固定か変動による固定額フィールド、直近ベット、その他の見え隠れ             
+                    document.getElementById('id_fix_or_variable_0').onclick = function() {
+                        document.getElementById('id_fix_bet').style.visibility ='visible';
+                        document.getElementById('id_nanbai').style.visibility ='hidden';
+                        document.getElementById('id_lost_bet_reset').style.visibility ='hidden';
+                        document.getElementById('id_win_bet_reset').style.visibility ='hidden';
+                        document.getElementById('id_stopbet_bymaxbet').style.visibility ='hidden';
+                    };
+
+                    document.getElementById('id_fix_or_variable_1').onclick = function() {
+                        document.getElementById('id_fix_bet').style.visibility ='hidden';
+                        document.getElementById('id_nanbai').style.visibility ='visible';
+                        document.getElementById('id_lost_bet_reset').style.visibility ='visible';
+                        document.getElementById('id_win_bet_reset').style.visibility ='visible';
+                        document.getElementById('id_stopbet_bymaxbet').style.visibility ='visible';
+                    };
+ 
+                    
+                    //  // マーチンか利益確定法かによるマージンの見え隠れ
+
+                     document.getElementById('id_bet_way_0').onclick = function() {
+                        document.getElementById('id_margin').style.visibility = 'hidden';
+                    };
+                    document.getElementById('id_bet_way_1').onclick = function() {
+                        document.getElementById('id_margin').style.visibility = 'visible';
+                        };  
+                    
+
+                    // // 単勝購入ターゲット人気またはジョッキーを選択した時の挙動
+                    document.getElementById('id_win_bet_select_0').onclick = function() {
+                        document.getElementById('id_target_ninki').style.visibility = 'visible';
+                        document.getElementById('id_target_jockey').style.visibility = 'hidden';
+                    };
+                    document.getElementById('id_win_bet_select_1').onclick = function() {
+                        document.getElementById('id_target_ninki').style.visibility = 'hidden';
+                        document.getElementById('id_target_jockey').style.visibility = 'visible';
+                        };  
+
+
+
+                    // // カウントダウン人気またはジョッキーを選択した時の挙動
+                    document.getElementById('id_countdown_select_0').onclick = function() {
+                        document.getElementById('id_countdown_jockey').style.visibility = 'hidden';
+                        document.getElementById('id_countdown_ninki').style.visibility = 'visible';
+                    };
+                    document.getElementById('id_countdown_select_1').onclick = function() {
+                        document.getElementById('id_countdown_jockey').style.visibility = 'visible';
+                        document.getElementById('id_countdown_ninki').style.visibility = 'hidden';
+                        };           
+            
+                    // 単勝購入ターゲットを選択した時のカウントダウン対象の挙動
+                    document.getElementById('id_win_bet_select_0').onclick = function() {
+                        document.getElementById('id_countdown_select_0').checked = true ;
+                        document.getElementById('id_countdown_select_1').disabled = true;
+                        document.getElementById('id_countdown_select_0').disabled = false;
+                        document.getElementById('id_target_jockey').style.visibility = 'hidden'; 
+                        document.getElementById('id_target_ninki').style.visibility = 'visible';
+                        document.getElementById('id_countdown_jockey').style.visibility = 'hidden';  
+                        document.getElementById('id_countdown_ninki').style.visibility = 'visible';        
+                    };
+                    document.getElementById('id_win_bet_select_1').onclick = function() {
+                        document.getElementById('id_countdown_select_1').checked = true;
+                        document.getElementById('id_countdown_select_0').disabled = true;
+                        document.getElementById('id_countdown_select_1').disabled = false;
+                        document.getElementById('id_target_jockey').style.visibility = 'visible'; 
+                        document.getElementById('id_target_ninki').style.visibility = 'hidden'; 
+                        document.getElementById('id_countdown_jockey').style.visibility = 'visible';  
+                        document.getElementById('id_countdown_ninki').style.visibility = 'hidden';  
+                        };      
+
+
+                </script>
+             
+
+     <p>{{countdown_ms1}}</p>
+     <p>{{countdown_ms2}}</p>
+
+    </body>
+    </html>
